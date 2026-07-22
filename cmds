@@ -1,1 +1,22 @@
 kubectl apply -f main.yaml
+
+########################### Replica set ########################
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: lwm-replica
+spec:
+  # modify replicas according to your case
+  replicas: 5
+  selector:
+    matchLabels:
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        tier: frontend
+    spec:
+      containers:
+      - name: cont1
+        image: httpd
+########################### Demon set ##########################
