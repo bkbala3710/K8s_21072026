@@ -20,3 +20,19 @@ spec:
       - name: cont1
         image: httpd
 ########################### Demon set ##########################
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: lwm-daemon
+spec:
+  selector:
+    matchLabels:
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        tier: frontend
+    spec:
+      containers:
+      - name: cont1
+        image: httpd
